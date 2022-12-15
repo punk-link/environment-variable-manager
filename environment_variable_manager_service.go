@@ -29,14 +29,14 @@ func New() EnvironmentVariableManager {
 	return &EnvironmentVariableManagerService{}
 }
 
-func (t *EnvironmentVariableManagerService) TryGet(variableName string) (bool, string) {
+func (t *EnvironmentVariableManagerService) TryGet(variableName string) (string, bool) {
 	if result, ok := _environmentVariables[variableName]; ok {
-		return true, result
+		return result, true
 	}
 
 	logger := log.Default()
 	logger.Printf("no configuration value has been found for '%s'", variableName)
-	return false, ""
+	return "", false
 }
 
 func getLocalVariables() map[string]string {
