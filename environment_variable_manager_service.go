@@ -16,11 +16,11 @@ func init() {
 	totalLength := len(localVariables) + len(systemVariables)
 
 	_environmentVariables = make(map[string]string, totalLength)
-	for key, value := range localVariables {
+	for key, value := range systemVariables {
 		_environmentVariables[key] = value
 	}
 
-	for key, value := range systemVariables {
+	for key, value := range localVariables {
 		_environmentVariables[key] = value
 	}
 }
